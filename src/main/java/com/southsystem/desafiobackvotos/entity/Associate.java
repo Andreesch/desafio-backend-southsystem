@@ -23,9 +23,6 @@ public class Associate {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
-
     @Column(name = "FEDERAL_IDENTIFICATION", nullable = false, length = 11)
     private String federalIdentification;
 
@@ -39,15 +36,6 @@ public class Associate {
 
     public Associate setId(String id) {
         this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Associate setName(String name) {
-        this.name = name;
         return this;
     }
 

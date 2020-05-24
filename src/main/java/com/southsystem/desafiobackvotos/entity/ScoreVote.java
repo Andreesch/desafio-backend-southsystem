@@ -1,5 +1,7 @@
 package com.southsystem.desafiobackvotos.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +26,8 @@ public class ScoreVote {
     @Column(name = "AGREED", nullable = false)
     private Boolean agreed;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+    @Column(name = "VOTE_AT", nullable = false)
+    private LocalDateTime voteAt;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "SCORE_ID", referencedColumnName = "ID", nullable = false, updatable = false,
@@ -55,12 +57,12 @@ public class ScoreVote {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public LocalDateTime getVoteAt() {
+        return voteAt;
     }
 
-    public ScoreVote setName(String name) {
-        this.name = name;
+    public ScoreVote setVoteAt(LocalDateTime voteAt) {
+        this.voteAt = voteAt;
         return this;
     }
 

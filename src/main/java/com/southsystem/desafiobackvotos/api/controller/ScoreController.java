@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.southsystem.desafiobackvotos.api.dto.ScoreCreateDto;
+import com.southsystem.desafiobackvotos.api.dto.ScoreOpenDto;
+import com.southsystem.desafiobackvotos.api.dto.ScoreOpenResponseDto;
 import com.southsystem.desafiobackvotos.api.dto.ScoreResponseDto;
 import com.southsystem.desafiobackvotos.api.mapper.ScoreMapper;
 import com.southsystem.desafiobackvotos.service.ScoreService;
@@ -42,5 +44,19 @@ public class ScoreController {
     public ScoreResponseDto create(
             @ApiParam(value = "${v1.score}", required = true) @RequestBody @Valid ScoreCreateDto scoreCreateDto) {
         return ScoreMapper.toResponseDto(scoreService.create(scoreCreateDto));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping(value = "/open", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "${v1.score.open}")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = ApiResponseMessages.MESSAGE_201, response = ScoreResponseDto.class),
+            @ApiResponse(code = 403, message = ApiResponseMessages.MESSAGE_403),
+            @ApiResponse(code = 404, message = ApiResponseMessages.MESSAGE_404)
+
+    })
+    public ScoreOpenResponseDto open(
+            @ApiParam(value = "${v1.score}", required = true) @RequestBody @Valid ScoreOpenDto scoreOpenDto) {
+        return ScoreMapper.toOpenResponseDto(scoreService.open(scoreOpenDto));
     }
 }

@@ -1,5 +1,6 @@
 package com.southsystem.desafiobackvotos.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,12 +32,18 @@ public class Score {
     @Column(name = "SUBJECT", nullable = false)
     private String subject;
 
-    @Column(name = "SESSION_LENGTH")
+    @Column(name = "SESSION_LENGTH", nullable = true)
     private Long sessionLength;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "SCORE_STATUS")
+    @Column(name = "SCORE_STATUS", nullable = true)
     private ScoreStatus scoreStatus;
+
+    @Column(name = "OPEN_AT", nullable = true)
+    private LocalDateTime openAt;
+
+    @Column(name = "CLOSE_AT", nullable = true)
+    private LocalDateTime closeAt;
 
     @OrderBy("name ASC")
     @OneToMany(mappedBy = "score", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
@@ -84,6 +91,24 @@ public class Score {
 
     public Score setScoreStatus(ScoreStatus scoreStatus) {
         this.scoreStatus = scoreStatus;
+        return this;
+    }
+
+    public LocalDateTime getOpenAt() {
+        return openAt;
+    }
+
+    public Score setOpenAt(LocalDateTime openAt) {
+        this.openAt = openAt;
+        return this;
+    }
+
+    public LocalDateTime getCloseAt() {
+        return closeAt;
+    }
+
+    public Score setCloseAt(LocalDateTime closeAt) {
+        this.closeAt = closeAt;
         return this;
     }
 

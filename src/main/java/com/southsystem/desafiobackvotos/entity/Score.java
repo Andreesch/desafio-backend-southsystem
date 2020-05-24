@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,8 +31,12 @@ public class Score {
     @Column(name = "SUBJECT", nullable = false)
     private String subject;
 
-    @Column(name = "SESSION_LENGTH", nullable = false)
+    @Column(name = "SESSION_LENGTH")
     private Long sessionLength;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SCORE_STATUS")
+    private ScoreStatus scoreStatus;
 
     @OrderBy("name ASC")
     @OneToMany(mappedBy = "score", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
@@ -69,6 +75,15 @@ public class Score {
 
     public Score setSessionLength(Long sessionLength) {
         this.sessionLength = sessionLength;
+        return this;
+    }
+
+    public ScoreStatus getScoreStatus() {
+        return scoreStatus;
+    }
+
+    public Score setScoreStatus(ScoreStatus scoreStatus) {
+        this.scoreStatus = scoreStatus;
         return this;
     }
 

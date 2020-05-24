@@ -30,7 +30,7 @@ public class Associate {
     private String federalIdentification;
 
     @OrderBy("id ASC")
-    @OneToMany(mappedBy = "associates", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "associate", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private List<ScoreVote> scoreVotes;
 
     public String getId() {

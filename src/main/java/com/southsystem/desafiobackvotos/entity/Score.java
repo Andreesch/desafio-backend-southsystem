@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
@@ -48,6 +49,9 @@ public class Score {
     @OrderBy("name ASC")
     @OneToMany(mappedBy = "score", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private List<ScoreVote> scoreVotes;
+
+    @OneToOne
+    private ScoreClose scoreClose;
 
     public String getId() {
         return id;
@@ -118,6 +122,15 @@ public class Score {
 
     public Score setScoreVotes(List<ScoreVote> scoreVotes) {
         this.scoreVotes = scoreVotes;
+        return this;
+    }
+
+    public ScoreClose getScoreClose() {
+        return scoreClose;
+    }
+
+    public Score setScoreClose(ScoreClose scoreClose) {
+        this.scoreClose = scoreClose;
         return this;
     }
 }

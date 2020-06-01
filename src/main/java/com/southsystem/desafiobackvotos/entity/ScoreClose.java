@@ -33,6 +33,10 @@ public class ScoreClose {
     @Column(name = "DENY_RESULT", nullable = false)
     private Long denyResult;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SCORE_CLOSE_STATUS", nullable = false)
+    private ScoreCloseStatus scoreCloseStatus;
+
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private Score score;
@@ -70,6 +74,15 @@ public class ScoreClose {
 
     public ScoreClose setDenyResult(Long denyResult) {
         this.denyResult = denyResult;
+        return this;
+    }
+
+    public ScoreCloseStatus getScoreCloseStatus() {
+        return scoreCloseStatus;
+    }
+
+    public ScoreClose setScoreCloseStatus(ScoreCloseStatus scoreCloseStatus) {
+        this.scoreCloseStatus = scoreCloseStatus;
         return this;
     }
 

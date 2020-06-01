@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.southsystem.desafiobackvotos.entity.Score;
 
 @Repository
-public interface ScoreRepository extends JpaRepository<Score, String> {
+public interface ScoreRepository extends JpaRepository<Score, String>, ScoreSearchRepository {
 }

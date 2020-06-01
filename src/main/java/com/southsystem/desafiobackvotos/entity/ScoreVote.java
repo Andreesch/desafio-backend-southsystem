@@ -24,7 +24,7 @@ public class ScoreVote {
     private String id;
 
     @Column(name = "AGREED", nullable = false)
-    private Boolean agreed;
+    private boolean agreed;
 
     @Column(name = "VOTE_AT", nullable = false)
     private LocalDateTime voteAt;
@@ -48,11 +48,11 @@ public class ScoreVote {
         return this;
     }
 
-    public Boolean getAgreed() {
+    public boolean isAgreed() {
         return agreed;
     }
 
-    public ScoreVote setAgreed(Boolean agreed) {
+    public ScoreVote setAgreed(boolean agreed) {
         this.agreed = agreed;
         return this;
     }

@@ -4,18 +4,18 @@ import java.time.LocalDateTime;
 
 public class ScoreOpenResponseDto {
 
-    private String scoreId;
+    private String id;
 
     private LocalDateTime openAt;
 
     private LocalDateTime closeAt;
 
-    public String getScoreId() {
-        return scoreId;
+    public String getId() {
+        return id;
     }
 
-    public ScoreOpenResponseDto setScoreId(String scoreId) {
-        this.scoreId = scoreId;
+    public ScoreOpenResponseDto setId(String id) {
+        this.id = id;
         return this;
     }
 

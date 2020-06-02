@@ -13,7 +13,7 @@ public class ScoreMapper {
 
     public static Score toEntity(ScoreCreateDto scoreCreateDto) {
         return modelMapper.map(scoreCreateDto, Score.class)
-                .setScoreStatus(ScoreStatus.OPEN);
+                .setScoreStatus(ScoreStatus.CREATED);
     }
 
     public static ScoreResponseDto toResponseDto(Score score) {

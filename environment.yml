@@ -1,11 +1,15 @@
 version: "3"
 services:
   rabbitmq:
-    image: rabbitmq
+    image: rabbitmq:3-management
     command: rabbitmq-server
-    expose:
-      - 5672
-      - 15672
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - TZ=America/Sao_Paulo
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "5672" ]
       interval: 5s
@@ -20,6 +24,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ROOT_HOST=%
+      - TZ=America/Sao_Paulo
     # volumes:
     #    - db_data:/var/lib/mysql
     healthcheck:
@@ -40,13 +45,14 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_RABBITMQ_HOST=rabbitmq
+      - TZ=America/Sao_Paulo
     depends_on:
       - mysql-container
       - rabbitmq
     networks:
          - platform
-# volumes:
-#     db_data: {}
+volumes:
+    db_data: {}
 networks:
   platform:
   

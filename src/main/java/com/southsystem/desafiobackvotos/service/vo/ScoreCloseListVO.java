@@ -1,8 +1,10 @@
 package com.southsystem.desafiobackvotos.service.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ScoreCloseListVO {
+public class ScoreCloseListVO implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private List<String> scoresToCloseList;
 

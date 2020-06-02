@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -46,7 +45,6 @@ public class Score {
     @Column(name = "CLOSE_AT", nullable = true)
     private LocalDateTime closeAt;
 
-    @OrderBy("name ASC")
     @OneToMany(mappedBy = "score", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private List<ScoreVote> scoreVotes;
 

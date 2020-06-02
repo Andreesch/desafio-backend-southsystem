@@ -1,8 +1,10 @@
 package com.southsystem.desafiobackvotos.service.vo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ScoreCloseMessageVO {
+public class ScoreCloseMessageVO implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private LocalDateTime closeAt;
 

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.southsystem.desafiobackvotos.entity.ScoreClose;
 
 @Repository
-public interface ScoreCloseRepository extends JpaRepository<ScoreClose, String> {
+public interface ScoreCloseRepository extends JpaRepository<ScoreClose, String>, ScoreCloseSearchRepository {
 }

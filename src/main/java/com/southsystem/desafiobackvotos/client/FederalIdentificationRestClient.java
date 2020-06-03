@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.southsystem.desafiobackvotos.api.exception.generic.NotFoundException;
 import com.southsystem.desafiobackvotos.entity.AbleToVoteStatus;
 import com.southsystem.desafiobackvotos.service.AbleToVoteResponseVO;
 import com.squareup.okhttp.Call;
@@ -43,7 +42,6 @@ public class FederalIdentificationRestClient {
             e.printStackTrace();
         }
 
-        //TODO: trocar exception
-       throw new NotFoundException("teste");
+        return null;
     }
 }

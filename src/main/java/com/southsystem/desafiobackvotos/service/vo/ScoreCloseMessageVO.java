@@ -12,7 +12,7 @@ public class ScoreCloseMessageVO implements Serializable {
 
     private Long denyResult;
 
-    private boolean isApproved;
+    private Boolean isApproved;
 
     public LocalDateTime getCloseAt() {
         return closeAt;
@@ -41,11 +41,11 @@ public class ScoreCloseMessageVO implements Serializable {
         return this;
     }
 
-    public boolean isApproved() {
+    public Boolean getApproved() {
         return isApproved;
     }
 
-    public ScoreCloseMessageVO setApproved(boolean approved) {
+    public ScoreCloseMessageVO setApproved(Boolean approved) {
         isApproved = approved;
         return this;
     }

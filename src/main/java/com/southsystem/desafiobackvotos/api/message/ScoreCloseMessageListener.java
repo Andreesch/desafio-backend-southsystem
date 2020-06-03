@@ -19,9 +19,14 @@ public class ScoreCloseMessageListener {
 
     @RabbitListener(queues = RabbitConfig.SCORE_CLOSE_QUEUE)
     public void processScoresToClose(ScoreCloseListVO scoreCloseListVO) {
-        logger.info("Fechando as pautas");
+        logger.info("Fechando pautas");
 
         scoreCloseListVO.getScoresToCloseList()
                 .forEach(id -> scoreCloseService.closeScore(id));
+    }
+
+    @RabbitListener(queues = RabbitConfig.SCORE_QUEUE)
+    public void receiveCloseScoreMessage(String scorePayload) {
+        logger.info("Nova mensagem inscrita no tópico: " + scorePayload);
     }
 }

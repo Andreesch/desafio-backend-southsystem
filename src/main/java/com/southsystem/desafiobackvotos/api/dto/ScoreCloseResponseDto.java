@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class ScoreCloseResponseDto {
 
+    private String id;
+
     private String scoreName;
 
     private String scoreSubject;
@@ -14,7 +16,16 @@ public class ScoreCloseResponseDto {
 
     private Long denyResult;
 
-    private boolean isApproved;
+    private Boolean isApproved;
+
+    public String getId() {
+        return id;
+    }
+
+    public ScoreCloseResponseDto setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public String getScoreName() {
         return scoreName;
@@ -61,11 +72,11 @@ public class ScoreCloseResponseDto {
         return this;
     }
 
-    public boolean isApproved() {
+    public Boolean getApproved() {
         return isApproved;
     }
 
-    public ScoreCloseResponseDto setApproved(boolean approved) {
+    public ScoreCloseResponseDto setApproved(Boolean approved) {
         isApproved = approved;
         return this;
     }

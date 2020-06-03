@@ -45,10 +45,10 @@ public class Score {
     @Column(name = "CLOSE_AT", nullable = true)
     private LocalDateTime closeAt;
 
-    @OneToMany(mappedBy = "score", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "score", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private List<ScoreVote> scoreVotes;
 
-    @OneToOne
+    @OneToOne(mappedBy = "score", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private ScoreClose scoreClose;
 
     public String getId() {

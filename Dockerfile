@@ -8,6 +8,10 @@ ARG JAR_FILE=target/*.jar
 
 ADD wait-for-it.sh /wait-for-it.sh
 
+ENV JPDA_ADDRESS="8080"
+
+ENV JPDA_TRANSPORT="dt_socket"
+
 RUN chmod +x /wait-for-it.sh
 
 COPY ${JAR_FILE} app.jar

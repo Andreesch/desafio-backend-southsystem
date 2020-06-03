@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.southsystem.desafiobackvotos.api.dto.ScoreCreateDto;
 import com.southsystem.desafiobackvotos.api.dto.ScoreOpenDto;
-import com.southsystem.desafiobackvotos.api.exception.ScoreClosedException;
 import com.southsystem.desafiobackvotos.api.exception.ScoreInvalidStatusException;
 import com.southsystem.desafiobackvotos.api.exception.ScoreNotFoundException;
 import com.southsystem.desafiobackvotos.api.mapper.ScoreMapper;
@@ -51,15 +50,15 @@ public class ScoreService {
                 .orElseThrow(() -> new ScoreNotFoundException(scoreId));
     }
 
-    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-    public Score findByIdWithVotes(String scoreId) {
-        return scoreRepository.findByIdWithVotes(scoreId)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public Score findOpenById(String scoreId) {
+        return scoreRepository.findOpenById(scoreId, ScoreStatus.OPEN)
                 .orElseThrow(() -> new ScoreNotFoundException(scoreId));
     }
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public List<String> findCurrentScoresToClose(LocalDateTime closeAtReference) {
-        return scoreRepository.findCurrentScoresToClose(closeAtReference);
+        return scoreRepository.findCurrentScoresToClose(closeAtReference, ScoreStatus.OPEN);
     }
 
     public void updateScore(Score updatedScore) {

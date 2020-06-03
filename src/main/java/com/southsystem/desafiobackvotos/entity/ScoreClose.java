@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,8 +38,9 @@ public class ScoreClose {
     @Column(name = "SCORE_CLOSE_STATUS", nullable = false)
     private ScoreCloseStatus scoreCloseStatus;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(optional = false)
     @MapsId
+    @JoinColumn(name = "SCORE_CLOSE_SCORE_ID", referencedColumnName = "ID")
     private Score score;
 
     public String getId() {

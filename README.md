@@ -24,34 +24,31 @@ No cooperativismo, cada associado possui um voto e as decisões são tomadas em 
 
 - Para este projeto, o uso de docker-containers foi utilizado para estabelecer um "ambiente" integrado entre as tecnologias MySQL, Spring Boot e RabbitMQ.
 
-1) Buildar o snapshot da aplicação em Spring Boot
+1) Buildar o snapshot da aplicação em Spring Boot (rodar na pasta raiz do projeto)
 
 ```
 mvn clean package install
-
 ```
 
-2) Instalando o docker-compose | obs: Este passo é opcional, caso o Docker-Compose ainda não esteja instalado em sua máquina
+2) Instalando o docker-compose | * obs: Este passo somente é necessário caso o Docker-Compose ainda não esteja instalado em sua máquina.
 
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
-
 ```
 
-3) Executando ambiente integrado utilizando o Compose | Atenção: executar este comando na pasta raíz do projeto.
+3) Executando ambiente integrado utilizando o Docker-Compose | * Atenção: executar este comando na pasta raíz do projeto.
 
 ```
-docker-compose -f environment.yml up -d
-
+docker-compose -f environment.yml up -d --build
 ```
 
 - Após subir o ambiente, é possível encontrar a documentação das APIs da aplicação através da URL: `http://localhost:8080/swagger-ui.html`.
 - Para verificar o status das filas, acessar URL: `http://localhost:15672/#/queues`. 
 - Para estabelecer uma conexão com o banco de dados utilizando uma ferramenta (Dbeaver, Squirrel), abra uma conexão para a URL `http://localhost:13306` com as credenciais root/root.
 
-### REST APIs
+### ENDPOINTS
 
 #### Criar Pauta
 
